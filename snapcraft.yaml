@@ -1,0 +1,56 @@
+name: marker
+base: core22
+adopt-info: marker
+summary: Marker is a markdown editor for linux made with GTK+-3.0
+description: |
+   Marker is a markdown editor for linux made with love and GTK+-3.0.
+grade: stable
+confinement: strict
+compression: lzo
+architectures:
+  - build-on: amd64
+  - build-on: armhf
+  - build-on: arm64
+layout:
+  /usr/lib/x86_64-linux-gnu/webkit2gtk-4.1:
+     bind: $SNAP/gnome-platform/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1
+  /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so:
+     symlink: $SNAP/gnome-platform/usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so
+
+slots:
+  marker:
+    interface: dbus
+    bus: session
+    name: com.github.fabiocolacio.marker
+
+apps:
+  marker:
+    command: usr/bin/marker
+    extensions: [gnome]
+    plugs:
+      - home
+      - audio-playback
+      - network
+      - network-status
+      - network-bind
+      - optical-drive
+      - removable-media
+    common-id: com.github.fabiocolacio.marker
+    desktop: usr/share/applications/com.github.fabiocolacio.marker.desktop
+        
+parts:
+  marker:
+    source: https://github.com/fabiocolacio/Marker.git
+    source-tag: 2023.05.02
+    plugin: meson
+    parse-info: [usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml]
+    meson-parameters:
+      - --prefix=/snap/marker/current/usr
+    build-packages:
+      - libghc-pandoc-dev
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0)
+    organize:
+      snap/marker/current/usr: usr  
+    
