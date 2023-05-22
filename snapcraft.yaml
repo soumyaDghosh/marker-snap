@@ -13,9 +13,9 @@ architectures:
   - build-on: arm64
 layout:
   /usr/lib/x86_64-linux-gnu/webkit2gtk-4.1:
-     bind: $SNAP/gnome-platform/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1
+     bind: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET-linux-gnu/webkit2gtk-4.1
   /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so:
-     symlink: $SNAP/gnome-platform/usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so
+     symlink: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET-linux-gnu/libwebkit2gtk-4.1.so
 
 slots:
   marker:
@@ -48,6 +48,7 @@ parts:
       - --prefix=/snap/marker/current/usr
     build-packages:
       - libghc-pandoc-dev
+      - libgtksourceview-3.0-dev
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
