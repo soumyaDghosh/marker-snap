@@ -46,9 +46,12 @@ parts:
     parse-info: [usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml]
     meson-parameters:
       - --prefix=/snap/marker/current/usr
+    build-snaps:
+      - cmake
     build-packages:
       - libghc-pandoc-dev
       - libgtksourceview-3.0-dev
+      - libgtkspell3-3-dev
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
