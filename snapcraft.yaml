@@ -8,11 +8,12 @@ architectures:
   - build-on: amd64
   - build-on: armhf
   - build-on: arm64
+  
 layout:
-  /usr/lib/x86_64-linux-gnu/webkit2gtk-4.1:
-     bind: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET-linux-gnu/webkit2gtk-4.1
-  /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so:
-     symlink: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET-linux-gnu/libwebkit2gtk-4.1.so
+  /usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.1:
+     bind: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.1
+  /usr/lib/$CRAFT_ARCH_TRIPLET/libwebkit2gtk-4.1.so:
+     symlink: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libwebkit2gtk-4.1.so
 
 slots:
   marker:
