@@ -48,7 +48,6 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
-      VER=''
     stage-packages:
       - libgtkspell3-3-0
     organize:
