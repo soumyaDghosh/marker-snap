@@ -6,9 +6,7 @@ confinement: strict
 compression: lzo
 architectures:
   - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
-  
+    build-for: amd64
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.1:
       bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.1
@@ -37,7 +35,6 @@ apps:
 parts:
   marker:
     source: https://github.com/fabiocolacio/Marker.git
-    source-tag: 2023.05.02
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml]
     meson-parameters:
@@ -51,6 +48,7 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
+      VER=''
     stage-packages:
       - libgtkspell3-3-0
     organize:
