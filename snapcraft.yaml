@@ -1,6 +1,7 @@
 name: marker
 base: core22
 adopt-info: marker
+version: 2023.05.02
 grade: stable
 confinement: strict
 compression: lzo
@@ -34,7 +35,7 @@ apps:
         
 parts:
   marker:
-    source: https://github.com/fabiocolacio/Marker.git
+    source: https://github.com/fabiocolacio/Marker/archive/refs/tags/2023.05.02.tar.gz
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml]
     meson-parameters:
@@ -45,9 +46,6 @@ parts:
       - libghc-pandoc-dev
       - libgtksourceview-3.0-dev
       - libgtkspell3-3-dev
-    override-pull: |
-      craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0)
     stage-packages:
       - libgtkspell3-3-0
     organize:
