@@ -6,10 +6,10 @@ confinement: strict
 compression: lzo
 architectures:
   - build-on: amd64
-    build-for: amd64
+
 layout:
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.1:
-      bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.1
+  /usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.1:
+      bind: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.1
 
 slots:
   marker:
@@ -23,21 +23,18 @@ apps:
     extensions: [gnome]
     plugs:
       - home
-      - audio-playback
       - network
       - network-status
       - network-bind
-      - optical-drive
-      - removable-media
     common-id: com.github.fabiocolacio.marker
     desktop: usr/share/applications/com.github.fabiocolacio.marker.desktop
-        
+
 parts:
   marker:
     source: https://github.com/fabiocolacio/Marker.git
-    source-tag: 2020.04.04.2
+    source-tag: '2023.05.02'
     plugin: meson
-    parse-info: [usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml]
+    parse-info: [ usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml ]
     meson-parameters:
       - --prefix=/snap/marker/current/usr
     build-snaps:
@@ -46,12 +43,23 @@ parts:
       - libghc-pandoc-dev
       - libgtksourceview-3.0-dev
       - libgtkspell3-3-dev
-    override-pull: |
-      craftctl default
-      craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0)
+    organize:
+      snap/marker/current: .
+  deps:
+    after: [ marker ]
+    plugin: nil
     stage-packages:
       - libgtkspell3-3-0
-    organize:
-      snap/marker/current/usr: usr  
-    
+      - pandoc
+      - libgtksourceview-3.0-1
+    prime:
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgtkspell3-3.so.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgtkspell3-3.so.0.2.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/enchant-2/enchant_aspell.so
+      - usr/lib/$CRAFT_ARCH_TRIPLET/enchant-2/enchant_hspell.so
+      - usr/lib/$CRAFT_ARCH_TRIPLET/enchant-2/enchant_hunspell.so
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libenchant-2.so.2
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libenchant-2.so.2.3.2
+      - usr/bin/pandoc
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgtksourceview-3.0.so.1
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgtksourceview-3.0.so.1.8.0
