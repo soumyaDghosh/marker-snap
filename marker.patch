@@ -1,0 +1,30 @@
+diff -Naur a/data/com.github.fabiocolacio.marker.appdata.xml b/data/com.github.fabiocolacio.marker.appdata.xml
+--- a/data/com.github.fabiocolacio.marker.appdata.xml	2023-06-17 23:09:05.211969473 +0530
++++ b/data/com.github.fabiocolacio.marker.appdata.xml	2023-06-17 23:10:18.262521486 +0530
+@@ -2,6 +2,7 @@
+ <!-- Copyright 2018-2020 Fabio Colacio <fabio.colacio.dev@gmail.com> -->
+ <component type="desktop-application">
+   <id>com.github.fabiocolacio.marker.desktop</id>
++  <icon type="stock">snap.marker.com.github.fabiocolacio.marker</icon>
+   <metadata_license>FSFAP</metadata_license>
+   <project_license>GPL-3.0</project_license>
+   <name>Marker</name>
+@@ -136,5 +137,5 @@
+     <content_attribute id="money-purchasing">none</content_attribute>
+     <content_attribute id="money-gambling">none</content_attribute>
+   </content_rating>
+-  
++
+ </component>
+diff -Naur a/data/com.github.fabiocolacio.marker.desktop b/data/com.github.fabiocolacio.marker.desktop
+--- a/data/com.github.fabiocolacio.marker.desktop	2023-06-17 23:09:24.423589555 +0530
++++ b/data/com.github.fabiocolacio.marker.desktop	2023-06-17 23:10:48.065928224 +0530
+@@ -18,7 +18,7 @@
+ Comment[zh_CN]=简单的GTK+用Markdown编辑器
+ Categories=GTK;Utility;
+ Exec=marker %u
+-Icon=com.github.fabiocolacio.marker
++Icon=snap.marker.com.github.fabiocolacio.marker
+ Terminal=false
+ Type=Application
+ X-GNOME-Gettext-Domain=marker
