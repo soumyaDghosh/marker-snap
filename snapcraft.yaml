@@ -6,6 +6,8 @@ confinement: strict
 compression: lzo
 architectures:
   - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
 
 layout:
   /usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.1:
@@ -26,6 +28,7 @@ apps:
       - network
       - network-status
       - network-bind
+      - unity7
     common-id: com.github.fabiocolacio.marker
     desktop: usr/share/applications/com.github.fabiocolacio.marker.desktop
 
