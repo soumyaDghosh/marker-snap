@@ -26,6 +26,7 @@ apps:
     extensions: [gnome]
     plugs:
       - home
+      - removable-media
       - network
       - network-status
       - network-bind
