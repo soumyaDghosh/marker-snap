@@ -36,7 +36,7 @@ apps:
 parts:
   marker:
     source: https://github.com/fabiocolacio/Marker.git
-    source-tag: '2023.05.02'
+    source-tag: '2918.01.09'
     source-depth: 1
     plugin: meson
     parse-info: [ usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml ]
