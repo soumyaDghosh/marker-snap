@@ -39,7 +39,7 @@ parts:
     source-tag: '2023.05.02'
 # ext:updatesnap
 #   version-format:
-#     format: %M.%m.%R
+#     format: '%M.%m.%R'
 #     lower-than: 2024.0.0
     source-depth: 1
     plugin: meson
