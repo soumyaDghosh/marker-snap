@@ -36,7 +36,11 @@ apps:
 parts:
   marker:
     source: https://github.com/fabiocolacio/Marker.git
-    source-tag: '2918.01.09'
+    source-tag: '2023.05.02'
+# ext:updatesnap
+#   version-format:
+#     format: %M.%m.%R
+#     lower-than: 2024.0.0
     source-depth: 1
     plugin: meson
     parse-info: [ usr/share/metainfo/com.github.fabiocolacio.marker.appdata.xml ]
